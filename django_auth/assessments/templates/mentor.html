@@ -1,0 +1,20 @@
+<h1>Hello {{name}}</h1>
+<h2>Add Assessment</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ assessment.as_p }}
+    <input type="submit" value="Submit">
+  </form> 
+
+{% for i in submissions %}
+<h2>submission</h2>
+    <p>Assessment: {{i.Assessment}}</p>
+    <p>StudentName: {{i.StudentName}}</p>
+    <p>File submission <a  href="{{i.File}}" download> Download </a></p>
+    <p>Link: {{i.Link}}</p>
+    <p>Date Of Submission: {{i.DateOfSubmission}}</p>
+    <p>Grade: {{i.Grade}}</p>
+    <p>Remark: {{i.Remark}}</p>
+    <a href="{% url 'Change_Sub' i.id%}">[Grade]</a>
+{% endfor %}
+
